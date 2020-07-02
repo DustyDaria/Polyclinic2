@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C7525855-A221-4AF2-A2AF-22DFD6F37774}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Polyclinic2</RootNamespace>
+    <AssemblyName>Polyclinic2</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddDiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDiz.Designer.cs">
+      <DependentUpon>AddDiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDoc.Designer.cs">
+      <DependentUpon>AddDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPat.Designer.cs">
+      <DependentUpon>AddPat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdmChooseDiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdmChooseDiz.Designer.cs">
+      <DependentUpon>AdmChooseDiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdmChooseDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdmChooseDoc.Designer.cs">
+      <DependentUpon>AdmChooseDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdmChoosePat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdmChoosePat.Designer.cs">
+      <DependentUpon>AdmChoosePat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeDiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeDiz.Designer.cs">
+      <DependentUpon>ChangeDiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeDoc.Designer.cs">
+      <DependentUpon>ChangeDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePat.Designer.cs">
+      <DependentUpon>ChangePat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainAdminForm.Designer.cs">
+      <DependentUpon>MainAdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainDoctorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainDoctorForm.Designer.cs">
+      <DependentUpon>MainDoctorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainPatientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainPatientForm.Designer.cs">
+      <DependentUpon>MainPatientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PolyclinicDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PolyclinicDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddDiz.resx">
+      <DependentUpon>AddDiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddDoc.resx">
+      <DependentUpon>AddDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPat.resx">
+      <DependentUpon>AddPat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdmChooseDiz.resx">
+      <DependentUpon>AdmChooseDiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdmChooseDoc.resx">
+      <DependentUpon>AdmChooseDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdmChoosePat.resx">
+      <DependentUpon>AdmChoosePat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeDiz.resx">
+      <DependentUpon>ChangeDiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeDoc.resx">
+      <DependentUpon>ChangeDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePat.resx">
+      <DependentUpon>ChangePat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainAdminForm.resx">
+      <DependentUpon>MainAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainDoctorForm.resx">
+      <DependentUpon>MainDoctorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainPatientForm.resx">
+      <DependentUpon>MainPatientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="PolyclinicDataSet.xsc">
+      <DependentUpon>PolyclinicDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PolyclinicDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PolyclinicDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PolyclinicDataSet.xss">
+      <DependentUpon>PolyclinicDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
