@@ -16,11 +16,12 @@ namespace Polyclinic2
         DataBase dataBase = new DataBase();
 
         public int IDmain;
-        public string typeSearchTransfer_Diz, typeSearchTransfer_Pat;
-        public string stringReaderBoxTransfer;
+        private string typeSearchTransfer_Diz, typeSearchTransfer_Pat;
+        private string stringReaderBoxTransfer;
         public string cellClickDataPat = String.Empty, cellClickDataDiz = String.Empty;
-        public int cellClickRowIndex;
-        public int cellClickColumnIndex;
+        //public int cellClickRowIndex;
+        //public int cellClickColumnIndex;
+        public int cellIDDiz, cellIDPat;
 
         public string search_ID_FROM_Pat = String.Empty, search_ID_FROM_Diz = String.Empty;
 
@@ -83,12 +84,13 @@ namespace Polyclinic2
 
             while (reader.Read())
             {
-                data.Add(new string[4]);
+                data.Add(new string[5]);
 
                 data[data.Count - 1][0] = reader[0].ToString();
                 data[data.Count - 1][1] = reader[1].ToString();
                 data[data.Count - 1][2] = reader[2].ToString();
                 data[data.Count - 1][3] = reader[3].ToString();
+                data[data.Count - 1][4] = reader[4].ToString();
             }
             reader.Close();
             myConnection.Close();
@@ -112,31 +114,40 @@ namespace Polyclinic2
             string queryIDPat = String.Format("SELECT * FROM " + tablePat + " WHERE id_user LIKE '%" + stringReaderBox + "%';");
 
             string queryDiagnosisDiz = String.Format("SELECT * FROM " + tableDiz + " WHERE diagnosis LIKE '%" + stringReaderBox + "%';");
-            string queryDiagnosisDiz_ID = String.Format("SELECT id_user FROM " + tableDiz + " WHERE diagnosis LIKE '%" + stringReaderBox + "%';");
+            string queryDiagnosisPat = String.Format("SELECT * FROM " + tablePat + " JOIN " + tableDiz + " ON " + tableDiz + ".id_user = " 
+                + tablePat + ".id_user WHERE " + tableDiz + ".diagnosis LIKE '%" + stringReaderBox + "%';");
 
             string queryAmbulatoryTreatmentDiz = String.Format("SELECT * FROM " + tableDiz + " WHERE ambulatoryTreatment LIKE '%" + stringReaderBox + "%';");
-            string queryAmbulatoryTreatmentDiz_ID = String.Format("SELECT id_user FROM " + tableDiz + " WHERE ambulatoryTreatment LIKE '%" + stringReaderBox + "%';");
-
+            string queryAmbulatoryTreatmentPat = String.Format("SELECT * FROM " + tablePat + " JOIN " + tableDiz + " ON " + tableDiz + ".id_user = " 
+                + tablePat + ".id_user WHERE " + tableDiz + ".ambulatoryTreatment LIKE '%" + stringReaderBox + "%';");
+            
             string queryTermOfDisabilityDiz = String.Format("SELECT * FROM " + tableDiz + " WHERE termOfDisability LIKE '%" + stringReaderBox + "%';");
-            string queryTermOfDisabilityDiz_ID = String.Format("SELECT id_user FROM " + tableDiz + " WHERE termOfDisability LIKE '%" + stringReaderBox + "%';");
-
+            string queryTermOfDisabilityPat = String.Format("SELECT * FROM " + tablePat + " JOIN " + tableDiz + " ON " + tableDiz + ".id_user = "
+                + tablePat + ".id_user WHERE " + tableDiz + ".termOfDisability LIKE '%" + stringReaderBox + "%';");
+            
             string queryDispensaryAccountingDiz = String.Format("SELECT * FROM " + tableDiz + " WHERE dispensaryAccounting LIKE '%" + stringReaderBox + "%';");
-            string queryDispensaryAccountingDiz_ID = String.Format("SELECT id_user FROM " + tableDiz + " WHERE dispensaryAccounting LIKE '%" + stringReaderBox + "%';");
-
+            string queryDispensaryAccountingPat = String.Format("SELECT * FROM " + tablePat + " JOIN " + tableDiz + " ON " + tableDiz + ".id_user = "
+                + tablePat + ".id_user WHERE " + tableDiz + ".dispensaryAccounting LIKE '%" + stringReaderBox + "%';");
+            
             string queryStartDateOfTreatmentDiz = String.Format("SELECT * FROM " + tableDiz + " WHERE startDateOfTreatment LIKE '%" + stringReaderBox + "%';");
-            string queryStartDateOfTreatmentDiz_ID = String.Format("SELECT id_user FROM " + tableDiz + "WHERE startDateOfTreatment LIKE '%" + stringReaderBox + "%';");
+            string queryStartDateOfTreatmentPat = String.Format("SELECT * FROM " + tablePat + " JOIN " + tableDiz + " ON " + tableDiz + ".id_user = "
+                + tablePat + ".id_user WHERE " + tableDiz + ".startDateOfTreatment LIKE '%" + stringReaderBox + "%';");
             
             string queryFIOPat = String.Format("SELECT * FROM " + tablePat + " WHERE fio_patient LIKE '%" + stringReaderBox + "%';");
-            string queryFIOPat_ID = String.Format("SELECT id_user FROM " + tablePat + " WHERE fio_patient LIKE '%" + stringReaderBox + "%';");
+            string queryFIODiz = String.Format("SELECT * FROM " + tableDiz + " JOIN " + tablePat + " ON " + tablePat + ".id_user = "
+                + tableDiz + ".id_user WHERE " + tablePat + ".fio_patient  LIKE '%" + stringReaderBox + "%';");
             
             string queryBirthPatientPat = String.Format("SELECT * FROM " + tablePat + " WHERE birth_patient LIKE '%" + stringReaderBox + "%';");
-            string queryBirthPatientPat_ID = String.Format("SELECT id_user FROM " + tablePat + " WHERE birth_patient LIKE '%" + stringReaderBox + "%';");
-
+            string queryBirthPatientDiz = String.Format("SELECT * FROM " + tableDiz + " JOIN " + tablePat + " ON " + tablePat + ".id_user = "
+                + tableDiz + ".id_user WHERE " + tablePat + ".birth_patient LIKE '%" + stringReaderBox + "%';");
+            
             string querySocialStatusPat = String.Format("SELECT * FROM " + tablePat + " WHERE socialStatus_patient LIKE '%" + stringReaderBox + "%';");
-            string querySocialStatusPat_ID = String.Format("SELECT id_user FROM " + tablePat + " WHERE socialStatus_patient LIKE '%" + stringReaderBox + "%';");
-
+            string querySocialStatusDiz = String.Format("SELECT * FROM " + tableDiz + " JOIN " + tablePat + " ON " + tablePat + ".id_user = "
+                + tableDiz + ".id_user WHERE " + tablePat + ".socialStatus_patient LIKE '%" + stringReaderBox + "%';");
+            
             string queryCurrentStatePat = String.Format("SELECT * FROM " + tablePat + " WHERE currentState_patient LIKE '%" + stringReaderBox + "%';");
-            string queryCurrentStatePat_ID = String.Format("SELECT id_user FROM " + tablePat + " WHERE currentState_patient LIKE '%" + stringReaderBox + "%';");
+            string queryCurrentStateDiz = String.Format("SELECT * FROM " + tableDiz + " JOIN " + tablePat + " ON " + tablePat + ".id_user = "
+                + tableDiz + ".id_user WHERE " + tablePat + ".currentState_patient LIKE '%" + stringReaderBox + "%';");
             
 
             if (Convert.ToString(typeSearchDiz) != String.Empty && Convert.ToString(typeSearchPat) == String.Empty)
@@ -157,124 +168,62 @@ namespace Polyclinic2
                 {
                     dataBase.Select_6(queryDiagnosisDiz);
                     foreach (string[] diz in dataBase.data)
-                    {
                         dataGridViewDiz.Rows.Add(diz);
-                        ID_users.Add(Convert.ToString(dataBase.getID(queryDiagnosisDiz_ID)));
-                    }
 
                     dataBase.data.Clear();
 
-                    //search_ID_FROM_Diz = Convert.ToString(dataBase.getID(queryDiagnosisDiz_ID));
-
-                    //int n = ID_users.Count;
-
-                    /*dataBase.Select("SELECT * FROM " + tablePat + " WHERE id_user = '" + ID_users.ForEach() + "';");
+                    dataBase.Select(queryDiagnosisPat);
                     foreach (string[] pat in dataBase.data)
-                        dataGridViewPat.Rows.Add(pat);*/
-
-                    /*ID_users.ForEach(delegate (string id)
-                    {
-                        dataBase.Select("SELECT * FROM " + tablePat + " WHERE id_user = '" + id + "';");
-                        foreach (string[] pat in dataBase.data)
-                            dataGridViewPat.Rows.Add(pat);
-                    });*/
-
-                    /*for (int i = 0; i < ID_users.Count; i++)
-                    {
-                        dataBase.Select("SELECT * FROM " + tablePat + " WHERE id_user = '" + ID_users[i] + "';");
-                        foreach (string[] pat in dataBase.data)
-                            dataGridViewPat.Rows.Add(pat);
-                    }*/
-
-                    foreach (var item in ID_users)
-                    {
-                        dataBase.Select("SELECT * FROM " + tablePat + " WHERE id_user = '" + item + "';");
-                        foreach (string[] pat in dataBase.data)
-                            dataGridViewPat.Rows.Add(pat);
-                    }
+                        dataGridViewPat.Rows.Add(pat);
                 }
                 else if (Convert.ToString(typeSearchDiz) == "Амбулаторное лечение")
                 {
                     
                     dataBase.Select_6(queryAmbulatoryTreatmentDiz);
                     foreach (string[] diz in dataBase.data)
-                    {
                         dataGridViewDiz.Rows.Add(diz);
-                        ID_users.Add(Convert.ToString(dataBase.getID(queryAmbulatoryTreatmentDiz_ID)));
-                    }
 
-                    dataBase.data.Clear(); 
+                    dataBase.data.Clear();
 
-                    //search_ID_FROM_Diz = Convert.ToString(dataBase.getID(queryAmbulatoryTreatmentDiz_ID));
-
-                    foreach (var item in ID_users)
-                    {
-                        dataBase.Select("SELECT * FROM " + tablePat + " WHERE id_user = '" + item + "';");
-                        foreach (string[] pat in dataBase.data)
-                            dataGridViewPat.Rows.Add(pat);
-                    }
+                    dataBase.Select(queryAmbulatoryTreatmentPat);
+                    foreach (string[] pat in dataBase.data)
+                        dataGridViewPat.Rows.Add(pat);
                 }
                 else if (Convert.ToString(typeSearchDiz) == "Срок нетрудоспособности")
                 {
                     dataBase.Select_6(queryTermOfDisabilityDiz);
                     foreach (string[] diz in dataBase.data)
-                    {
                         dataGridViewDiz.Rows.Add(diz);
-                        ID_users.Add(Convert.ToString(dataBase.getID(queryTermOfDisabilityDiz_ID)));
-                    }
                         
                     dataBase.data.Clear();
 
-                    //search_ID_FROM_Diz = Convert.ToString(dataBase.getID(queryTermOfDisabilityDiz_ID));
-
-                    foreach (var item in ID_users)
-                    {
-                        dataBase.Select("SELECT * FROM " + tablePat + " WHERE id_user = '" + item + "';");
-                        foreach (string[] pat in dataBase.data)
-                            dataGridViewPat.Rows.Add(pat);
-                    }
+                    dataBase.Select(queryTermOfDisabilityPat);
+                    foreach (string[] pat in dataBase.data)
+                        dataGridViewPat.Rows.Add(pat);
                 }
                 else if (Convert.ToString(typeSearchDiz) == "Диспансерный учет")
                 {
                     dataBase.Select_6(queryDispensaryAccountingDiz);
                     foreach (string[] diz in dataBase.data)
-                    {
                         dataGridViewDiz.Rows.Add(diz);
-                        ID_users.Add(Convert.ToString(dataBase.getID(queryDispensaryAccountingDiz_ID)));
-                    }
                         
                     dataBase.data.Clear();
 
-                    //search_ID_FROM_Diz = Convert.ToString(dataBase.getID(queryDispensaryAccountingDiz_ID));
-
-                    foreach (var item in ID_users)
-                    {
-                        dataBase.Select("SELECT * FROM " + tablePat + " WHERE id_user = '" + item + "';");
-                        foreach (string[] pat in dataBase.data)
-                            dataGridViewPat.Rows.Add(pat);
-                    }
-                    
+                    dataBase.Select(queryDispensaryAccountingPat);
+                    foreach (string[] pat in dataBase.data)
+                        dataGridViewPat.Rows.Add(pat);
                 }
                 else if (Convert.ToString(typeSearchDiz) == "Дата начала лечения")
                 {
                     dataBase.Select_6(queryStartDateOfTreatmentDiz);
                     foreach (string[] diz in dataBase.data)
-                    {
                         dataGridViewDiz.Rows.Add(diz);
-                        ID_users.Add(Convert.ToString(dataBase.getID(queryStartDateOfTreatmentDiz_ID)));
-                    }
 
                     dataBase.data.Clear();
 
-                    //search_ID_FROM_Diz = Convert.ToString(dataBase.getID(queryStartDateOfTreatmentDiz_ID));
-
-                    foreach (var item in ID_users)
-                    {
-                        dataBase.Select("SELECT * FROM " + tablePat + " WHERE id_user = '" + item + "';");
-                        foreach (string[] pat in dataBase.data)
-                            dataGridViewPat.Rows.Add(pat);
-                    }
-                    
+                    dataBase.Select(queryStartDateOfTreatmentPat);
+                    foreach (string[] pat in dataBase.data)
+                        dataGridViewPat.Rows.Add(pat);
                 }
             }
             else if (Convert.ToString(typeSearchPat) != String.Empty && Convert.ToString(typeSearchDiz) == String.Empty)
@@ -295,82 +244,49 @@ namespace Polyclinic2
                 {
                     dataBase.Select(queryFIOPat);
                     foreach (string[] pat in dataBase.data)
-                    {
                         dataGridViewPat.Rows.Add(pat);
-                        ID_users.Add(Convert.ToString(dataBase.getID(queryFIOPat_ID)));
-                    }
 
                     dataBase.data.Clear();
 
-                    //search_ID_FROM_Pat = Convert.ToString(dataBase.getID(queryFIOPat_ID));
-
-                    foreach (var item in ID_users)
-                    {
-                        dataBase.Select_6("SELECT * FROM " + tableDiz + " WHERE id_user = '" + item + "';");
-                        foreach (string[] diz in dataBase.data)
-                            dataGridViewDiz.Rows.Add(diz);
-                    }
-                    
+                    dataBase.Select_6(queryFIODiz);
+                    foreach (string[] diz in dataBase.data)
+                        dataGridViewDiz.Rows.Add(diz);
                 }
                 else if (Convert.ToString(typeSearchPat) == "Дата рождения пациента")
                 {
                     dataBase.Select(queryBirthPatientPat);
                     foreach (string[] pat in dataBase.data)
-                    {
                         dataGridViewPat.Rows.Add(pat);
-                        ID_users.Add(Convert.ToString(dataBase.getID(queryBirthPatientPat_ID)));
-                    }
 
                     dataBase.data.Clear();
 
-                    //search_ID_FROM_Pat = Convert.ToString(dataBase.getID(queryBirthPatientPat_ID));
-
-                    foreach (var item in ID_users)
-                    {
-                        dataBase.Select_6("SELECT * FROM " + tableDiz + " WHERE id_user = '" + item + "';");
-                        foreach (string[] diz in dataBase.data)
-                            dataGridViewDiz.Rows.Add(diz);
-                    }
+                    dataBase.Select_6(queryBirthPatientDiz);
+                    foreach (string[] diz in dataBase.data)
+                        dataGridViewDiz.Rows.Add(diz);
                 }
                 else if (Convert.ToString(typeSearchPat) == "Социальный статус пациента")
                 {
                     dataBase.Select(querySocialStatusPat);
                     foreach (string[] pat in dataBase.data)
-                    {
                         dataGridViewPat.Rows.Add(pat);
-                        ID_users.Add(Convert.ToString(dataBase.getID(querySocialStatusPat_ID)));
-                    }
                         
                     dataBase.data.Clear(); //чистка буфера данных
 
-                    //search_ID_FROM_Pat = Convert.ToString(dataBase.getID(querySocialStatusPat_ID));
-
-                    foreach (var item in ID_users)
-                    {
-                        dataBase.Select_6("SELECT * FROM " + tableDiz + " WHERE id_user = '" + item + "';");
-                        foreach (string[] diz in dataBase.data)
-                            dataGridViewDiz.Rows.Add(diz);
-                    }
+                    dataBase.Select_6(querySocialStatusDiz);
+                    foreach (string[] diz in dataBase.data)
+                        dataGridViewDiz.Rows.Add(diz);
                 }
                 else if (Convert.ToString(typeSearchPat) == "Текущее состояние пациента")
                 {
                     dataBase.Select(queryCurrentStatePat);
                     foreach (string[] pat in dataBase.data)
-                    {
                         dataGridViewPat.Rows.Add(pat);
-                        ID_users.Add(Convert.ToString(dataBase.getID(queryCurrentStatePat_ID)));
-                    }
 
                     dataBase.data.Clear(); //чистка буфера данных
 
-                    //search_ID_FROM_Pat = Convert.ToString(dataBase.getID(queryCurrentStatePat_ID));
-
-                    foreach (var item in ID_users)
-                    {
-                        dataBase.Select_6("SELECT * FROM " + tableDiz + " WHERE id_user = '" + item + "';");
-                        foreach (string[] diz in dataBase.data)
-                            dataGridViewDiz.Rows.Add(diz);
-                    }
+                    dataBase.Select_6(queryCurrentStateDiz);
+                    foreach (string[] diz in dataBase.data)
+                        dataGridViewDiz.Rows.Add(diz);
                 }
             }
             else if (Convert.ToString(listStatusPat) == String.Empty && Convert.ToString(listStatusDiz) == String.Empty)
@@ -414,7 +330,7 @@ namespace Polyclinic2
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            int cellIDPat = Convert.ToInt32(cellClickDataPat);
+            cellIDPat = Convert.ToInt32(cellClickDataPat);
             AddDiz addDiz = new AddDiz(cellIDPat, IDmain);
             this.Hide();
             addDiz.Show();
@@ -429,29 +345,55 @@ namespace Polyclinic2
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            int cellIDDiz = Convert.ToInt32(cellClickDataDiz);
-            ChangeDiz changeDiz = new ChangeDiz(cellIDDiz, IDmain);
-            this.Hide();
-            changeDiz.Show();
+            if ((cellClickDataPat != String.Empty) && (cellClickDataDiz == String.Empty))
+            {
+                MessageBox.Show("Пожалуйста, выберите ID ДИАГНОЗА (ID пациента)");
+            }
+            else if ((cellClickDataDiz != String.Empty) && (cellClickDataPat == String.Empty))
+            {
+                cellIDDiz = Convert.ToInt32(cellClickDataDiz);
+                ChangeDiz changeDiz = new ChangeDiz(cellIDDiz, IDmain);
+                this.Hide();
+                changeDiz.Show();
+            }
+            else if ((cellClickDataPat == String.Empty) && (cellClickDataDiz == String.Empty))
+            {
+                MessageBox.Show("Пожалуйста, выберите ID ДИАГНОЗА (нет ID)");
+            }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            int cellIDDiz = Convert.ToInt32(cellClickDataDiz);
+            if ((cellClickDataPat != String.Empty) && (cellClickDataDiz == String.Empty))
+            {
+                MessageBox.Show("Пожалуйста, выберите ID ДИАГНОЗА (ID пациента)");
+            }
+            else if ((cellClickDataDiz != String.Empty) && (cellClickDataPat == String.Empty))
+            {
+                cellIDDiz = Convert.ToInt32(cellClickDataDiz);
 
-            string queryDelDiz = String.Format("Delete From Diagnosis Where id_user = '" + cellIDDiz + "'");
+                label6.Text = Convert.ToString(cellIDDiz);
 
-            dataBase.Delete(queryDelDiz);
+                string queryDelDiz = String.Format("Delete From Diagnosis Where id_user = '" + cellIDDiz + "'");
 
-            MessageBox.Show("Данные о диагнозе пациента удалены");
+                dataBase.Delete(queryDelDiz);
 
-            dataGridViewDiz.Rows.Clear(); // Чистка старых  данных.
-            dataBase.data.Clear(); // чистка нашего буфера данных.
-            LoadDataDiz();
+                MessageBox.Show("Данные о диагнозе пациента удалены");
 
-            dataGridViewPat.Rows.Clear();
-            dataBase.data.Clear();
-            LoadDataPat();
+                dataGridViewDiz.Rows.Clear(); // Чистка старых  данных.
+                dataBase.data.Clear(); // чистка нашего буфера данных.
+                LoadDataDiz();
+
+                dataGridViewPat.Rows.Clear();
+                dataBase.data.Clear();
+                LoadDataPat();
+            }
+            else if ((cellClickDataPat == String.Empty) && (cellClickDataDiz == String.Empty))
+            {
+                MessageBox.Show("Пожалуйста, выберите ID ДИАГНОЗА (нет ID)");
+            }
+
+            
         }
 
         private void dataGridViewPat_CellContentClick(object sender, DataGridViewCellEventArgs e)
