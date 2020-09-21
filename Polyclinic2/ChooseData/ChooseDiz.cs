@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Polyclinic2
 {
-    public partial class AdmChooseDiz : Form
+    public partial class ChooseDiz : Form
     {
         DataBase dataBase = new DataBase();
 
@@ -19,8 +19,6 @@ namespace Polyclinic2
         private string typeSearchTransfer_Diz, typeSearchTransfer_Pat;
         private string stringReaderBoxTransfer;
         public string cellClickDataPat = String.Empty, cellClickDataDiz = String.Empty;
-        //public int cellClickRowIndex;
-        //public int cellClickColumnIndex;
         public int cellIDDiz, cellIDPat;
 
         public string search_ID_FROM_Pat = String.Empty, search_ID_FROM_Diz = String.Empty;
@@ -30,12 +28,31 @@ namespace Polyclinic2
         public const string tablePat = "Patient";
         public const string tableDiz = "Diagnosis";
 
-        public AdmChooseDiz(int ID)
+        public string userType;
+
+        public ChooseDiz(int ID)
         {
             IDmain = ID;
             InitializeComponent();
-            string queryUserName = String.Format("Select name_admin From Admin Where id_user = '{0}'", IDmain);
-            userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserName));
+
+            string queryUserType = String.Format("SELECT typeOfAccount FROM Users WHERE id_user = " + IDmain + ";");
+            userType = dataBase.getResult(queryUserType);
+
+            if (userType == "Администратор")
+            {
+                string queryUserNameAdmin = String.Format("SELECT name_admin FROM Admin WHERE id_user = " + IDmain + ";");
+                userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserNameAdmin));
+            }
+            else if (userType == "Доктор")
+            {
+                string queryUserNameDoctor = String.Format("SELECT fio_doctor FROM Doctor WHERE id_user = " + IDmain + ";");
+                userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserNameDoctor));
+            }
+            else if (userType == "Пациент")
+            {
+                string queryUserNamePatient = String.Format("SELECT fio_patient FROM Patient WHERE id_user = " + IDmain + ";");
+                userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserNamePatient));
+            }
 
             LoadDataDiz();
             LoadDataPat();
@@ -101,11 +118,6 @@ namespace Polyclinic2
 
         private void ListStatus(string typeSearchDiz, string typeSearchPat, string stringReaderBox)
         {
-             
-            //=============== Нужно доработать поиск ======================//
-
-
-
             dataGridViewDiz.Rows.Clear();//чистка старых данных
             dataGridViewPat.Rows.Clear();
             dataBase.data.Clear(); //чистка буфера данных
@@ -338,9 +350,18 @@ namespace Polyclinic2
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            MainAdminForm mainAdminForm = new MainAdminForm(IDmain);
-            this.Hide();
-            mainAdminForm.Show();
+            if (userType == "Администратор")
+            {
+                MainAdminForm mainAdminForm = new MainAdminForm(IDmain);
+                this.Hide();
+                mainAdminForm.Show();
+            }
+            else if (userType == "Доктор")
+            {
+                MainDoctorForm mainDoctorForm = new MainDoctorForm(IDmain);
+                this.Hide();
+                mainDoctorForm.Show();
+            }
         }
 
         private void buttonChange_Click(object sender, EventArgs e)

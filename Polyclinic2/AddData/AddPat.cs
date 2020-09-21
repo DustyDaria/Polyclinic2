@@ -19,7 +19,7 @@ namespace Polyclinic2
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            AdmChoosePat admChoosePat = new AdmChoosePat(IDmain);
+            ChoosePat admChoosePat = new ChoosePat(IDmain);
             this.Hide();
             admChoosePat.Show();
         }
@@ -66,7 +66,7 @@ namespace Polyclinic2
                 MessageBox.Show("Пользователь добавлен");
             }
 
-            AdmChoosePat admChoosePat = new AdmChoosePat(IDmain);
+            ChoosePat admChoosePat = new ChoosePat(IDmain);
             this.Hide();
             admChoosePat.Show();
         }

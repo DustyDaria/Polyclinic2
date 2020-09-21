@@ -20,38 +20,34 @@ namespace Polyclinic2
             IDmain = ID;
             InitializeComponent();
             string queryUserName = String.Format("Select name_admin From Admin Where id_user = '{0}'", IDmain);
-            userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserName));
+            userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserName)) + ", да и ваш айдишник Админа = " + IDmain;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 mainForm = new Form1();
+            AuthorizationUser mainForm = new AuthorizationUser();
             this.Hide();
             mainForm.Show();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonChooseDoc_Click(object sender, EventArgs e)
         {
-            AdmChooseDoc admChooseDoc = new AdmChooseDoc(IDmain);
+            ChooseDoc admChooseDoc = new ChooseDoc(IDmain);
             this.Hide();
             admChooseDoc.Show();
         }
 
         private void buttonChoosePat_Click(object sender, EventArgs e)
         {
-            AdmChoosePat admChoosePat = new AdmChoosePat(IDmain);
+            ChoosePat admChoosePat = new ChoosePat(IDmain);
             this.Hide();
             admChoosePat.Show();
         }
 
         private void buttonChooseDiz_Click(object sender, EventArgs e)
         {
-            AdmChooseDiz admChooseDiz = new AdmChooseDiz(IDmain);
+            ChooseDiz admChooseDiz = new ChooseDiz(IDmain);
             this.Hide();
             admChooseDiz.Show();
         }

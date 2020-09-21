@@ -46,83 +46,89 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddDiz.cs">
+    <Compile Include="AddData\AddDiz.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddDiz.Designer.cs">
+    <Compile Include="AddData\AddDiz.Designer.cs">
       <DependentUpon>AddDiz.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddDoc.cs">
+    <Compile Include="AddData\AddDoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddDoc.Designer.cs">
+    <Compile Include="AddData\AddDoc.Designer.cs">
       <DependentUpon>AddDoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddPat.cs">
+    <Compile Include="AddData\AddPat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddPat.Designer.cs">
+    <Compile Include="AddData\AddPat.Designer.cs">
       <DependentUpon>AddPat.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdmChooseDiz.cs">
+    <Compile Include="ChooseData\ChooseDiz.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdmChooseDiz.Designer.cs">
-      <DependentUpon>AdmChooseDiz.cs</DependentUpon>
+    <Compile Include="ChooseData\ChooseDiz.Designer.cs">
+      <DependentUpon>ChooseDiz.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdmChooseDoc.cs">
+    <Compile Include="ChooseData\ChooseDoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdmChooseDoc.Designer.cs">
-      <DependentUpon>AdmChooseDoc.cs</DependentUpon>
+    <Compile Include="ChooseData\ChooseDoc.Designer.cs">
+      <DependentUpon>ChooseDoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdmChoosePat.cs">
+    <Compile Include="ChooseData\ChoosePat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdmChoosePat.Designer.cs">
-      <DependentUpon>AdmChoosePat.cs</DependentUpon>
+    <Compile Include="ChooseData\ChoosePat.Designer.cs">
+      <DependentUpon>ChoosePat.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangeDiz.cs">
+    <Compile Include="ChangeData\ChangeDiz.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeDiz.Designer.cs">
+    <Compile Include="ChangeData\ChangeDiz.Designer.cs">
       <DependentUpon>ChangeDiz.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangeDoc.cs">
+    <Compile Include="ChangeData\ChangeDoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeDoc.Designer.cs">
+    <Compile Include="ChangeData\ChangeDoc.Designer.cs">
       <DependentUpon>ChangeDoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangePat.cs">
+    <Compile Include="ChangeData\ChangePat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangePat.Designer.cs">
+    <Compile Include="ChangeData\ChangePat.Designer.cs">
       <DependentUpon>ChangePat.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="AuthorizationUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AuthorizationUser.Designer.cs">
+      <DependentUpon>AuthorizationUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainAdminForm.cs">
+    <Compile Include="Admin%27s_profile\MainAdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainAdminForm.Designer.cs">
+    <Compile Include="Admin%27s_profile\MainAdminForm.Designer.cs">
       <DependentUpon>MainAdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainDoctorForm.cs">
+    <Compile Include="Doctor%27s_profile\DocPersonalAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainDoctorForm.Designer.cs">
+    <Compile Include="Doctor%27s_profile\DocPersonalAccount.Designer.cs">
+      <DependentUpon>DocPersonalAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor%27s_profile\MainDoctorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor%27s_profile\MainDoctorForm.Designer.cs">
       <DependentUpon>MainDoctorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainPatientForm.cs">
+    <Compile Include="Patient%27s_profile\MainPatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainPatientForm.Designer.cs">
+    <Compile Include="Patient%27s_profile\MainPatientForm.Designer.cs">
       <DependentUpon>MainPatientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PolyclinicDataSet.Designer.cs">
@@ -132,43 +138,46 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddDiz.resx">
+    <EmbeddedResource Include="AddData\AddDiz.resx">
       <DependentUpon>AddDiz.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddDoc.resx">
+    <EmbeddedResource Include="AddData\AddDoc.resx">
       <DependentUpon>AddDoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddPat.resx">
+    <EmbeddedResource Include="AddData\AddPat.resx">
       <DependentUpon>AddPat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdmChooseDiz.resx">
-      <DependentUpon>AdmChooseDiz.cs</DependentUpon>
+    <EmbeddedResource Include="ChooseData\ChooseDiz.resx">
+      <DependentUpon>ChooseDiz.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdmChooseDoc.resx">
-      <DependentUpon>AdmChooseDoc.cs</DependentUpon>
+    <EmbeddedResource Include="ChooseData\ChooseDoc.resx">
+      <DependentUpon>ChooseDoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdmChoosePat.resx">
-      <DependentUpon>AdmChoosePat.cs</DependentUpon>
+    <EmbeddedResource Include="ChooseData\ChoosePat.resx">
+      <DependentUpon>ChoosePat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangeDiz.resx">
+    <EmbeddedResource Include="ChangeData\ChangeDiz.resx">
       <DependentUpon>ChangeDiz.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangeDoc.resx">
+    <EmbeddedResource Include="ChangeData\ChangeDoc.resx">
       <DependentUpon>ChangeDoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangePat.resx">
+    <EmbeddedResource Include="ChangeData\ChangePat.resx">
       <DependentUpon>ChangePat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="AuthorizationUser.resx">
+      <DependentUpon>AuthorizationUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainAdminForm.resx">
+    <EmbeddedResource Include="Admin%27s_profile\MainAdminForm.resx">
       <DependentUpon>MainAdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainDoctorForm.resx">
+    <EmbeddedResource Include="Doctor%27s_profile\DocPersonalAccount.resx">
+      <DependentUpon>DocPersonalAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor%27s_profile\MainDoctorForm.resx">
       <DependentUpon>MainDoctorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainPatientForm.resx">
+    <EmbeddedResource Include="Patient%27s_profile\MainPatientForm.resx">
       <DependentUpon>MainPatientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -204,6 +213,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -38,9 +38,10 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(294, 160);
+            this.button1.Location = new System.Drawing.Point(392, 197);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 50);
+            this.button1.Size = new System.Drawing.Size(133, 62);
             this.button1.TabIndex = 0;
             this.button1.Text = "Выход";
             this.button1.UseVisualStyleBackColor = true;
@@ -49,9 +50,10 @@
             // buttonChooseDoc
             // 
             this.buttonChooseDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonChooseDoc.Location = new System.Drawing.Point(16, 59);
+            this.buttonChooseDoc.Location = new System.Drawing.Point(21, 73);
+            this.buttonChooseDoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonChooseDoc.Name = "buttonChooseDoc";
-            this.buttonChooseDoc.Size = new System.Drawing.Size(100, 50);
+            this.buttonChooseDoc.Size = new System.Drawing.Size(133, 62);
             this.buttonChooseDoc.TabIndex = 1;
             this.buttonChooseDoc.Text = "Врачи";
             this.buttonChooseDoc.UseVisualStyleBackColor = true;
@@ -60,9 +62,10 @@
             // buttonChoosePat
             // 
             this.buttonChoosePat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonChoosePat.Location = new System.Drawing.Point(157, 59);
+            this.buttonChoosePat.Location = new System.Drawing.Point(209, 73);
+            this.buttonChoosePat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonChoosePat.Name = "buttonChoosePat";
-            this.buttonChoosePat.Size = new System.Drawing.Size(100, 50);
+            this.buttonChoosePat.Size = new System.Drawing.Size(133, 62);
             this.buttonChoosePat.TabIndex = 2;
             this.buttonChoosePat.Text = "Пациенты";
             this.buttonChoosePat.UseVisualStyleBackColor = true;
@@ -71,9 +74,10 @@
             // buttonChooseDiz
             // 
             this.buttonChooseDiz.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonChooseDiz.Location = new System.Drawing.Point(294, 59);
+            this.buttonChooseDiz.Location = new System.Drawing.Point(392, 73);
+            this.buttonChooseDiz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonChooseDiz.Name = "buttonChooseDiz";
-            this.buttonChooseDiz.Size = new System.Drawing.Size(100, 50);
+            this.buttonChooseDiz.Size = new System.Drawing.Size(133, 62);
             this.buttonChooseDiz.TabIndex = 3;
             this.buttonChooseDiz.Text = "Диагнозы";
             this.buttonChooseDiz.UseVisualStyleBackColor = true;
@@ -83,23 +87,24 @@
             // 
             this.userName.AutoSize = true;
             this.userName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userName.Location = new System.Drawing.Point(12, 9);
+            this.userName.Location = new System.Drawing.Point(16, 11);
+            this.userName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.userName.Name = "userName";
-            this.userName.Size = new System.Drawing.Size(66, 24);
+            this.userName.Size = new System.Drawing.Size(85, 29);
             this.userName.TabIndex = 4;
             this.userName.Text = "label1";
-            this.userName.Click += new System.EventHandler(this.label1_Click);
             // 
             // MainAdminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 245);
+            this.ClientSize = new System.Drawing.Size(986, 302);
             this.Controls.Add(this.userName);
             this.Controls.Add(this.buttonChooseDiz);
             this.Controls.Add(this.buttonChoosePat);
             this.Controls.Add(this.buttonChooseDoc);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainAdminForm";
             this.Text = "MainAdminForm";
             this.ResumeLayout(false);

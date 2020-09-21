@@ -10,22 +10,23 @@ using System.Windows.Forms;
 
 namespace Polyclinic2
 {
-    public partial class MainDoctorForm : Form
+    public partial class MainPatientForm : Form
     {
         DataBase dataBase = new DataBase();
 
-        public MainDoctorForm(int ID)
+        public MainPatientForm(int ID)
         {
             InitializeComponent();
-            string queryUserName = String.Format("Select fio_doctor From Doctor Where id_user = '{0}'", ID);
+            string queryUserName = String.Format("Select fio_patient From Patient Where id_user = '{0}'", ID);
             userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserName));
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 mainForm = new Form1();
+            AuthorizationUser mainForm = new AuthorizationUser();
             this.Hide();
             mainForm.Show();
+           
         }
     }
 }

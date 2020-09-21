@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Polyclinic2
 {
-    public partial class AdmChooseDoc : Form
+    public partial class ChooseDoc : Form
     {
         DataBase dataBase = new DataBase();
 
@@ -21,13 +21,31 @@ namespace Polyclinic2
         public string cellClickData = String.Empty;
         public int cellClickRowIndex;
         public int cellClickColumnIndex;
-        
-        public AdmChooseDoc(int ID)
+        public string userType;
+
+        public ChooseDoc(int ID)
         {
             IDmain = ID;
             InitializeComponent();
-            string queryUserName = String.Format("Select name_admin From Admin Where id_user = '{0}'", IDmain);
-            userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserName));
+
+            string queryUserType = String.Format("SELECT typeOfAccount FROM Users WHERE id_user = " + IDmain + ";");
+            userType = dataBase.getResult(queryUserType);
+
+            if (userType == "Администратор")
+            {
+                string queryUserNameAdmin = String.Format("SELECT name_admin FROM Admin WHERE id_user = " + IDmain + ";");
+                userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserNameAdmin));
+            }
+            else if (userType == "Доктор")
+            {
+                string queryUserNameDoctor = String.Format("SELECT fio_doctor FROM Doctor WHERE id_user = " + IDmain + ";");
+                userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserNameDoctor));
+            }
+            else if (userType == "Пациент")
+            {
+                string queryUserNamePatient = String.Format("SELECT fio_patient FROM Patient WHERE id_user = " + IDmain + ";");
+                userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserNamePatient));
+            }
 
             LoadData();
         }

@@ -11,25 +11,43 @@ using System.Windows.Forms;
 
 namespace Polyclinic2
 {
-    public partial class AdmChoosePat : Form
+    public partial class ChoosePat : Form
     {
         DataBase dataBase = new DataBase();
         
         public int IDmain;
-        public string typeSearchTransfer = String.Empty;
-        public string stringReaderBoxTransfer = String.Empty;
+        private string typeSearchTransfer = String.Empty;
+        private string stringReaderBoxTransfer = String.Empty;
         public string changeSpecializ = String.Empty;
         public string cellClickData = String.Empty;
         public int cellClickRowIndex;
         public int cellClickColumnIndex;
 
-        public AdmChoosePat(int ID)
+        public string userType;
+
+        public ChoosePat(int ID)
         {
             IDmain = ID;
             InitializeComponent();
 
-            string queryUserName = String.Format("Select name_admin From Admin Where id_user = '{0}'", IDmain);
-            userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserName));
+            string queryUserType = String.Format("SELECT typeOfAccount FROM Users WHERE id_user = " + IDmain + ";");
+            userType = dataBase.getResult(queryUserType);
+
+            if (userType == "Администратор")
+            {
+                string queryUserNameAdmin = String.Format("SELECT name_admin FROM Admin WHERE id_user = " + IDmain + ";");
+                userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserNameAdmin));
+            }
+            else if (userType == "Доктор")
+            {
+                string queryUserNameDoctor = String.Format("SELECT fio_doctor FROM Doctor WHERE id_user = " + IDmain + ";");
+                userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserNameDoctor));
+            }
+            else if (userType == "Пациент")
+            {
+                string queryUserNamePatient = String.Format("SELECT fio_patient FROM Patient WHERE id_user = " + IDmain + ";");
+                userName.Text = "Ваше имя: " + Convert.ToString(dataBase.getResult(queryUserNamePatient));
+            }
 
             LoadData();
         }
@@ -62,9 +80,18 @@ namespace Polyclinic2
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            MainAdminForm mainAdminForm = new MainAdminForm(IDmain);
-            this.Hide();
-            mainAdminForm.Show();
+            if (userType == "Администратор")
+            {
+                MainAdminForm mainAdminForm = new MainAdminForm(IDmain);
+                this.Hide();
+                mainAdminForm.Show();
+            }
+            else if (userType == "Доктор")
+            {
+                MainDoctorForm mainDoctorForm = new MainDoctorForm(IDmain);
+                this.Hide();
+                mainDoctorForm.Show();
+            }
         }
 
         private void AdmChoosePat_Load(object sender, EventArgs e)
@@ -80,10 +107,9 @@ namespace Polyclinic2
             stringReaderBoxTransfer = searchReaderBox.Text;
 
             ListStatus(typeSearchTransfer, stringReaderBoxTransfer);
-
         }
 
-        public void ListStatus(string typeSearch, string stringReaderBox)
+        private void ListStatus(string typeSearch, string stringReaderBox)
         {
             dataGridViewDoc.Rows.Clear(); // Чистка старых  данных.
             dataBase.data.Clear(); // чистка нашего буфера данных.
@@ -137,11 +163,11 @@ namespace Polyclinic2
 
             string queryDelProfile = String.Format("Delete From Patient Where id_user = '{0}'", cellIDDel);
             string queryDelUser = String.Format("Delete From Users Where id_user = '{0}'", cellIDDel);
-            string queryDelDiagmosis = String.Format("Delete From Diagnosis Where id_user = '{0}'", cellIDDel);
+            string queryDelDiagnosis = String.Format("Delete From Diagnosis Where id_user = '{0}'", cellIDDel);
 
             dataBase.Delete(queryDelProfile);
             dataBase.Delete(queryDelUser);
-            dataBase.Delete(queryDelDiagmosis);
+            dataBase.Delete(queryDelDiagnosis);
 
             MessageBox.Show("Данные пользователя удалены");
 
@@ -166,12 +192,7 @@ namespace Polyclinic2
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            CellClickForChange(cellClickData);
-        }
-
-        private void CellClickForChange(string cellData)
-        {
-            int cellID = Convert.ToInt32(cellData);
+            int cellID = Convert.ToInt32(cellClickData);
             ChangePat changePat = new ChangePat(cellID, IDmain);
             this.Hide();
             changePat.Show();
@@ -179,9 +200,19 @@ namespace Polyclinic2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MainAdminForm admForm = new MainAdminForm(IDmain);
-            this.Hide();
-            admForm.Show();
+            if (userType == "Администратор")
+            {
+                MainAdminForm admForm = new MainAdminForm(IDmain);
+                this.Hide();
+                admForm.Show();
+            }
+            else if (userType == "Доктор")
+            {
+                MainDoctorForm docForm = new MainDoctorForm(IDmain);
+                this.Hide();
+                docForm.Show();
+            }
+
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)

@@ -128,7 +128,7 @@ namespace Polyclinic2
                 MessageBox.Show("Пользователь изменен");
             }
 
-            AdmChoosePat admChoosePat = new AdmChoosePat(returnIDmain);
+            ChoosePat admChoosePat = new ChoosePat(returnIDmain);
             this.Hide();
             admChoosePat.Show();
         }

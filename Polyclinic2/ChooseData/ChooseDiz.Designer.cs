@@ -1,6 +1,6 @@
 ﻿namespace Polyclinic2
 {
-    partial class AdmChooseDiz
+    partial class ChooseDiz
     {
         /// <summary>
         /// Required designer variable.

@@ -92,14 +92,14 @@ namespace Polyclinic2
                 MessageBox.Show("Пользователь изменен"); //Оповещение
             }
 
-            AdmChooseDoc admChooseDoc = new AdmChooseDoc(returnIDmain); //Возврат на предыдущую форму (в параметр как раз передаем ID авторизованного пользователя)
+            ChooseDoc admChooseDoc = new ChooseDoc(returnIDmain); //Возврат на предыдущую форму (в параметр как раз передаем ID авторизованного пользователя)
             this.Hide();
             admChooseDoc.Show();
         }
 
         private void buttonExit_Click(object sender, EventArgs e) //Кнопка выхода
         {
-            AdmChooseDoc admChooseDoc = new AdmChooseDoc(returnIDmain);
+            ChooseDoc admChooseDoc = new ChooseDoc(returnIDmain);
             this.Hide();
             admChooseDoc.Show();
         }

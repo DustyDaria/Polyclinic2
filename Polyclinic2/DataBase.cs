@@ -50,6 +50,7 @@ namespace Polyclinic2
                 MessageBox.Show("Ошибка!\n" + e.ToString());
             }
         }
+
         public void Select_6(string query)
         {
             try

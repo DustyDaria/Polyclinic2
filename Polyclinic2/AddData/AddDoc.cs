@@ -22,7 +22,7 @@ namespace Polyclinic2
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            AdmChooseDoc admChooseDoc = new AdmChooseDoc(IDmain);
+            ChooseDoc admChooseDoc = new ChooseDoc(IDmain);
             this.Hide();
             admChooseDoc.Show();
         }
@@ -77,7 +77,7 @@ namespace Polyclinic2
                 MessageBox.Show("Пользователь добавлен");
             }
 
-            AdmChooseDoc admChooseDoc = new AdmChooseDoc(IDmain);
+            ChooseDoc admChooseDoc = new ChooseDoc(IDmain);
             this.Hide();
             admChooseDoc.Show();
         }

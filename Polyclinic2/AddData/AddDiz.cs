@@ -46,14 +46,14 @@ namespace Polyclinic2
                 MessageBox.Show("Новый диагноз пациента успешно добавлен");
             }
 
-            AdmChooseDiz admChooseDiz = new AdmChooseDiz(returnIDmain);
+            ChooseDiz admChooseDiz = new ChooseDiz(returnIDmain);
             this.Hide();
             admChooseDiz.Show();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            AdmChooseDiz admChooseDiz = new AdmChooseDiz(returnIDmain);
+            ChooseDiz admChooseDiz = new ChooseDiz(returnIDmain);
             this.Hide();
             admChooseDiz.Show();
         }
